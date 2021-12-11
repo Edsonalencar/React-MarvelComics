@@ -1,0 +1,49 @@
+.CardComic {
+  position: relative;
+  height: 364px;
+  width: 200px;
+  background: transparent;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  cursor: pointer;
+}
+
+.CardComic:hover .titlecomic {
+  color: #ec1d24;
+}
+
+.CardComic:hover .authorcomic {
+  color: #ec1d24a1;
+}
+
+.CardComic:hover .midia {
+  height: 220px;
+  -webkit-transition: .5s;
+  transition: .5s;
+}
+
+.CardComic:hover .readme {
+  display: block;
+}
+
+.midia {
+  height: 255px;
+  -webkit-box-shadow: 0 0 1em #202020;
+          box-shadow: 0 0 1em #202020;
+  background: transparent;
+  -webkit-transition: .2s;
+  transition: .2s;
+}
+
+.titlecomic {
+  font-size: 16px;
+  font-weight: 600;
+  margin-top: -0.2rem;
+}
+
+.readme {
+  color: #3f3f3f;
+  display: none;
+  margin-top: 1rem;
+}
+/*# sourceMappingURL=comic.module.css.map */

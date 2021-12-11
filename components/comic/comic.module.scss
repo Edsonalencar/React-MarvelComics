@@ -1,0 +1,47 @@
+
+.CardComic {
+	position: relative;
+	height: 364px;
+	width: 200px;
+	background: transparent;
+	box-shadow: none;
+	cursor: pointer;
+
+	&:hover {
+		.titlecomic {
+			color: #ec1d24;
+		}
+
+		.authorcomic {
+			color: #ec1d24a1;
+		}
+
+		.midia {
+			height: 220px;
+			transition: .5s;
+		}
+
+		.readme {
+			display: block;
+		}
+	}
+}
+
+.midia {
+	height: 255px;
+	box-shadow: 0 0 1em #202020;
+	background: transparent;
+	transition: .2s;
+}
+
+.titlecomic {
+	font-size: 16px;
+	font-weight: 600;
+	margin-top: -0.2rem;
+}
+
+.readme {
+	color: #3f3f3f;
+	display: none;
+	margin-top: 1rem;
+}
