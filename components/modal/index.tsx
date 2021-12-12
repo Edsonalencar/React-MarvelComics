@@ -10,8 +10,8 @@ import CancelIcon from '@mui/icons-material/Cancel';
 		top: '50%',
 		left: '50%',
 		transform: 'translate(-50%, -50%)',
-		width: 800,
-		bgcolor: 'background.paper',
+		width: '80%',
+		bgcolor: '#ececec',
 		border: '2px solid #000',
 		boxShadow: 24,
 		py: 2,
@@ -63,7 +63,7 @@ import CancelIcon from '@mui/icons-material/Cancel';
 					aria-labelledby="child-modal-title"
 					aria-describedby="child-modal-description"
 				>
-					<Box sx={{ ...style, width: 1000, height: 600, py: 0, px: 0,}}>
+					<Box sx={{ ...style, height: '90%', py: 0, px: 0,}}>
 						{
 							isLoaded ? (
 								<GoogleMap
@@ -111,7 +111,7 @@ import CancelIcon from '@mui/icons-material/Cancel';
 					aria-labelledby="parent-modal-title"
 					aria-describedby="parent-modal-description"
 				>
-					<Card sx={style}>
+					<Card sx={{...style, width: '60%'}}>
 						<Grid container spacing={2}>
 							<Grid item xs={4}>
 								<CardMedia
