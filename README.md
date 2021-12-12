@@ -21,7 +21,8 @@ Contudo, o MUI não se da muito bem com o Sass por isso acabei fazendo uso da ve
 Ele foi hospedado na Versel e você pode acessa-lo [Por Aqui](https://react-marvel-comics-tau.vercel.app)
 ### OBS
 
-Um dos requisitos do teste era a implementação e uso da API do Google Maps, contudo, para poder acessar a api de forma efetiva é necessário a utilização de um cartão e eu infelizmente não tinha nenhum em mãos para poder libera-la, então não foi possível usa-la de maneira realmente eficiente.
+Um dos requisitos do teste era a implementação e uso da API do Google Maps, contudo, para poder acessar a api de forma efetiva é necessário a utilização de um cartão e eu infelizmente não tinha nenhum em mãos para poder libera-la, então não foi possível usa-la da maneira mais eficiente possivel, porém, consegui configurar para que ela tenha acesso a localização exata do usuario em tempo real, assim, pelo menos as comics poderiam ser entregues em sua localização.
+
 ## Getting Started
 
 First, run the development server:
