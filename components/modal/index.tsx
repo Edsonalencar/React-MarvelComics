@@ -12,7 +12,7 @@ import CancelIcon from '@mui/icons-material/Cancel';
 		transform: 'translate(-50%, -50%)',
 		width: '80%',
 		bgcolor: '#ececec',
-		border: '2px solid #000',
+		border: '2px solid #202020',
 		boxShadow: 24,
 		py: 2,
 		px: 2,

@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { Card, CardMedia, CardContent, Typography  } from '@mui/material';
 import styles from './comic.module.css';
 import Modal from '../modal';
-import { StyleRounded } from '@mui/icons-material';
 
 export default function Comic(props) {
 	const [count, setCount] = useState(1);
@@ -10,7 +9,7 @@ export default function Comic(props) {
   return (
 		<>
 			<Card
-				sx={{height: '364px', width: '200px', boxShadow: 'none'}}
+				sx={{height: '364px', width: '200px', boxShadow: 'none', background: 'transparent'}}
 				className={styles.CardComic}
 				onClick={() => setCount(count + 1)}
 			>
