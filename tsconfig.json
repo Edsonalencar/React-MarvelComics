@@ -23,7 +23,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx"
-  ],
+, "pages/api/googleMapsAPI.js"  ],
   "exclude": [
     "node_modules"
   ]

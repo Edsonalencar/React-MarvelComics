@@ -1,6 +1,9 @@
 import { useState, useEffect, Fragment } from 'react';
+import { GoogleMap, useJsApiLoader, Marker } from '@react-google-maps/api';
+
 import { Modal, Typography, Button, Box } from '@mui/material';
-import { Card, Grid, CardContent, CardMedia } from '@mui/material';
+import { Card, Grid, CardMedia } from '@mui/material';
+import CancelIcon from '@mui/icons-material/Cancel';
 
 	const style = {
 		position: 'absolute' as 'absolute',
@@ -9,7 +12,7 @@ import { Card, Grid, CardContent, CardMedia } from '@mui/material';
 		transform: 'translate(-50%, -50%)',
 		width: 800,
 		bgcolor: 'background.paper',
-		border: 0,
+		border: '2px solid #000',
 		boxShadow: 24,
 		py: 2,
 		px: 2,
@@ -19,14 +22,40 @@ import { Card, Grid, CardContent, CardMedia } from '@mui/material';
 		const [open, setOpen] = useState(false);
 		const handleOpen = () => {
 			setOpen(true);
+			getLocation()
 		};
 		const handleClose = () => {
 			setOpen(false);
 		};
 
+		const { isLoaded } = useJsApiLoader({
+			id: 'google-map-script',
+			googleMapsApiKey: "AIzaSyCRSVjpq6vguCQHbnn8NYdVFKeSklnIsns"
+		})
+
+		const [lat, setLat] = useState(0);
+		const [lng, setLng] = useState(0);
+
+		const center = {
+			lat,
+			lng,
+		}
+
+		function getLocation() {
+			if (navigator.geolocation) {
+				navigator.geolocation.getCurrentPosition(pos => {
+					setLat(pos.coords.latitude);
+					setLng(pos.coords.longitude);
+				});
+			}
+			console.log(center)
+		}
+
 		return (
 			<Fragment>
-				<Button onClick={handleOpen}>Receber Comics</Button>
+				<Button onClick={handleOpen} sx={{ color: '#ec1d24'}}>
+					Receber Comic
+				</Button>
 				<Modal
 					hideBackdrop
 					open={open}
@@ -34,12 +63,21 @@ import { Card, Grid, CardContent, CardMedia } from '@mui/material';
 					aria-labelledby="child-modal-title"
 					aria-describedby="child-modal-description"
 				>
-					<Box sx={{ ...style, width: 1000, height: 600}}>
-						<h2 id="child-modal-title">Text in a child modal</h2>
-						<p id="child-modal-description">
-							Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-						</p>
-						<Button onClick={handleClose}>Close Child Modal</Button>
+					<Box sx={{ ...style, width: 1000, height: 600, py: 0, px: 0,}}>
+						{
+							isLoaded ? (
+								<GoogleMap
+									mapContainerStyle={{width: '100%', height: '100%'}}
+									center={center}
+									zoom={13}
+								>
+									<Marker position={center}/>
+								</GoogleMap>
+							) : <></>
+						}
+						<Button onClick={handleClose} sx={{position: 'absolute', top: '5px', color: 'white'}}>
+							<CancelIcon fontSize="large" />
+						</Button>
 					</Box>
 				</Modal>
 			</Fragment>
@@ -84,10 +122,10 @@ import { Card, Grid, CardContent, CardMedia } from '@mui/material';
 								/>
 							</Grid>
 							<Grid item xs={8}>
-								<Typography sx={{ fontSize: 25, fontWeight: 600 }} align='center' gutterBottom={true}>
+								<Typography sx={{ fontSize: 25, fontWeight: 600, mb: 2 }} align='center' gutterBottom={true}>
 									{props.title}
 								</Typography>
-								<Typography variant="inherit" paragraph={true}>
+								<Typography variant="inherit" paragraph={true} sx={{textAlign: 'justify'}}>
 									{checkDescription()}
 								</Typography>
 								<Typography variant="body2">

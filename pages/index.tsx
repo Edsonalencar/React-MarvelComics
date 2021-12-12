@@ -4,23 +4,12 @@ import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 
 //Componentes MUI
-import { styled, alpha } from '@mui/material/styles';
 import { AppBar, Box, Toolbar, Grid } from '@mui/material';
-import { InputBase, Typography, Container } from '@mui/material'
+import { Typography, Container } from '@mui/material'
 
 //Meus Componentes
 import Comic from '../components/comic';
 import MalverAPI from './api/apiMarvelComic'
-
-  const SearchIconWrapper = styled('div')(({ theme }) => ({
-	padding: theme.spacing(0, 2),
-	height: '100%',
-	position: 'absolute',
-	pointerEvents: 'none',
-	display: 'flex',
-	alignItems: 'center',
-	justifyContent: 'center',
-  }));
 
 export async function getStaticProps() {
   const res = await  MalverAPI()
@@ -46,8 +35,8 @@ export default function Home(props) {
       </Head>
 
 			<Box sx={{ flexGrow: 1 }}>
-				<AppBar className={styles.appBar}>
-					<Toolbar className={styles.toolBar}>
+				<AppBar sx={{ position: 'relative', backgroundColor: '#202020' }}>
+					<Toolbar sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
 						<Image
 							src="/marvel-logo.png"
 							alt="Marvel Comics Logo"
@@ -66,7 +55,7 @@ export default function Home(props) {
 						noWrap
 						align='center'
 						component="div"
-						className={styles.title}
+						sx={{mb: 2, fontSize: '2rem'}}
 					>
 						Comics em Destaques
 					</Typography>
