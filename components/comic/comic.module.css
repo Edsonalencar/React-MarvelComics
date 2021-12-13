@@ -1,5 +1,4 @@
 .CardComic {
-  background: transparent;
   cursor: pointer;
 }
 
@@ -12,7 +11,7 @@
 }
 
 .CardComic:hover .midia {
-  height: 220px;
+  height: 70%;
   -webkit-transition: .5s;
   transition: .5s;
 }
@@ -22,7 +21,7 @@
 }
 
 .midia {
-  height: 255px;
+  height: 80%;
   -webkit-box-shadow: 0 0 1em #202020;
           box-shadow: 0 0 1em #202020;
   background: transparent;

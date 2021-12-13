@@ -3,13 +3,20 @@ import { Card, CardMedia, CardContent, Typography  } from '@mui/material';
 import styles from './comic.module.css';
 import Modal from '../modal';
 
+const Cardstyle = {
+	boxShadow: 'none',
+	background: 'transparent',
+	height: '364px',
+	width: '200px'
+};
+
 export default function Comic(props) {
 	const [count, setCount] = useState(1);
 
   return (
 		<>
 			<Card
-				sx={{height: '364px', width: '200px', boxShadow: 'none', background: 'transparent'}}
+				sx={Cardstyle}
 				className={styles.CardComic}
 				onClick={() => setCount(count + 1)}
 			>

@@ -3,89 +3,94 @@ import { GoogleMap, useJsApiLoader, Marker } from '@react-google-maps/api';
 
 import { Modal, Typography, Button, Box } from '@mui/material';
 import { Card, Grid, CardMedia } from '@mui/material';
+import {DialogActions, DialogContent, DialogContentText, DialogTitle } from '@mui/material';
+import Dialog, { DialogProps } from '@mui/material/Dialog';
 import CancelIcon from '@mui/icons-material/Cancel';
+import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
 
-	const style = {
-		position: 'absolute' as 'absolute',
-		top: '50%',
-		left: '50%',
-		transform: 'translate(-50%, -50%)',
-		width: '80%',
-		bgcolor: '#ececec',
-		border: '2px solid #202020',
-		boxShadow: 24,
-		py: 2,
-		px: 2,
+const style = {
+	position: 'absolute' as 'absolute',
+	top: '50%',
+	left: '50%',
+	transform: 'translate(-50%, -50%)',
+	width: '80%',
+	bgcolor: '#ececec',
+	border: '2px solid #202020',
+	boxShadow: 24,
+	py: 2,
+	px: 2,
+};
+
+
+function ChildModal(props) {
+	const [open, setOpen] = useState(false);
+	const handleOpen = () => {
+		setOpen(true);
+		getLocation()
+	};
+	const handleClose = () => {
+		setOpen(false);
 	};
 
-	function ChildModal(props) {
-		const [open, setOpen] = useState(false);
-		const handleOpen = () => {
-			setOpen(true);
-			getLocation()
-		};
-		const handleClose = () => {
-			setOpen(false);
-		};
+	const { isLoaded } = useJsApiLoader({
+		id: 'google-map-script',
+		googleMapsApiKey: "AIzaSyCRSVjpq6vguCQHbnn8NYdVFKeSklnIsns"
+	})
 
-		const { isLoaded } = useJsApiLoader({
-			id: 'google-map-script',
-			googleMapsApiKey: "AIzaSyCRSVjpq6vguCQHbnn8NYdVFKeSklnIsns"
-		})
+	const [lat, setLat] = useState(0);
+	const [lng, setLng] = useState(0);
 
-		const [lat, setLat] = useState(0);
-		const [lng, setLng] = useState(0);
-
-		const center = {
-			lat,
-			lng,
-		}
-
-		function getLocation() {
-			if (navigator.geolocation) {
-				navigator.geolocation.getCurrentPosition(pos => {
-					setLat(pos.coords.latitude);
-					setLng(pos.coords.longitude);
-				});
-			}
-			console.log(center)
-		}
-
-		return (
-			<Fragment>
-				<Button onClick={handleOpen} sx={{ color: '#ec1d24'}}>
-					Receber Comic
-				</Button>
-				<Modal
-					hideBackdrop
-					open={open}
-					onClose={handleClose}
-					aria-labelledby="child-modal-title"
-					aria-describedby="child-modal-description"
-				>
-					<Box sx={{ ...style, height: '90%', py: 0, px: 0,}}>
-						{
-							isLoaded ? (
-								<GoogleMap
-									mapContainerStyle={{width: '100%', height: '100%'}}
-									center={center}
-									zoom={13}
-								>
-									<Marker position={center}/>
-								</GoogleMap>
-							) : <></>
-						}
-						<Button onClick={handleClose} sx={{position: 'absolute', top: '5px', color: 'white'}}>
-							<CancelIcon fontSize="large" />
-						</Button>
-					</Box>
-				</Modal>
-			</Fragment>
-		);
+	const center = {
+		lat,
+		lng,
 	}
 
-	export default function NestedModal(props) {
-		const [open, setOpen] = useState(false);
+	function getLocation() {
+		if (navigator.geolocation) {
+			navigator.geolocation.getCurrentPosition(pos => {
+				setLat(pos.coords.latitude);
+				setLng(pos.coords.longitude);
+			});
+		}
+		console.log(center)
+	}
+
+	return (
+		<Fragment>
+			<Button onClick={handleOpen} color='warning'>
+				Receber Comic
+			</Button>
+			<Modal
+				hideBackdrop
+				open={open}
+				onClose={handleClose}
+				aria-labelledby="child-modal-title"
+				aria-describedby="child-modal-description"
+			>
+				<Box sx={{ ...style, height: '90%', py: 0, px: 0,}}>
+					{
+						isLoaded ? (
+							<GoogleMap
+								mapContainerStyle={{width: '100%', height: '100%'}}
+								center={center}
+								zoom={13}
+							>
+								<Marker position={center}/>
+							</GoogleMap>
+						) : <></>
+					}
+					<Button onClick={handleClose} sx={{position: 'absolute', top: '5px', color: 'white'}}>
+						<CancelIcon fontSize="large" />
+					</Button>
+				</Box>
+			</Modal>
+		</Fragment>
+	);
+}
+
+export default function NestedModal(props) {
+
+	const [open, setOpen] = useState(false);
 		const handleClose = () => setOpen(false);
 
 		useEffect(() => {
@@ -105,15 +110,16 @@ import CancelIcon from '@mui/icons-material/Cancel';
 
 		return (
 			<div>
-				<Modal
+				<Dialog
 					open={open}
 					onClose={handleClose}
-					aria-labelledby="parent-modal-title"
-					aria-describedby="parent-modal-description"
+					scroll={'body'}
 				>
-					<Card sx={{...style, width: '60%'}}>
-						<Grid container spacing={2}>
-							<Grid item xs={4}>
+					<Button onClick={handleClose} sx={{position: 'absolute', top: '5px', right: '0', color: 'white'}}>
+						<CloseOutlinedIcon fontSize="large" color='error'/>
+					</Button>
+					<Grid container spacing={0}>
+							<Grid item xs={12}>
 								<CardMedia
 									component="img"
 									height="360"
@@ -121,22 +127,22 @@ import CancelIcon from '@mui/icons-material/Cancel';
 									alt="green iguana"
 								/>
 							</Grid>
-							<Grid item xs={8}>
-								<Typography sx={{ fontSize: 25, fontWeight: 600, mb: 2 }} align='center' gutterBottom={true}>
+							<Grid item xs={12}>
+								<Typography sx={{ fontSize: 25, fontWeight: 600, mb: 2, p: 2 }} align='center' gutterBottom={true}>
 									{props.title}
 								</Typography>
-								<Typography variant="inherit" paragraph={true} sx={{textAlign: 'justify'}}>
-									{checkDescription()}
+								<Typography variant="inherit" paragraph={true} sx={{ textAlign: 'justify', p: 2 }}>
+									{ checkDescription() }
 								</Typography>
-								<Typography variant="body2">
+								<Typography variant="body2" sx={{ p: 2 }}>
 									Criadores: {props.creators.map((res, index) => checkCreators(res, index))}
 								</Typography>
-								<br />
-								<ChildModal />
 							</Grid>
 						</Grid>
-					</Card>
-				</Modal>
+					<DialogActions>
+          	<ChildModal />
+        	</DialogActions>
+				</Dialog>
 			</div>
 		);
 	}
