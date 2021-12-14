@@ -1,15 +1,22 @@
 import { useState } from 'react';
 import { Card, CardMedia, CardContent, Typography  } from '@mui/material';
+import useMediaQuery from '@mui/material/useMediaQuery';
+
 import styles from './comic.module.css';
 import Modal from '../modal';
 
 const Cardstyle = {
 	boxShadow: 'none',
 	background: 'transparent',
-	height: '364px',
-	width: '200px'
+	height: { xs: '248px', md: '364px' },
+	width: { xs: '138px', md: '200px' },
 };
 
+const ReadmeStyle = {
+	fontSize: { xs: '12px', md: '14px' },
+	mt: 1,
+	color: '#3f3f3f'
+}
 export default function Comic(props) {
 	const [count, setCount] = useState(1);
 
@@ -31,6 +38,7 @@ export default function Comic(props) {
 							variant="h6"
 							component="div"
 							noWrap
+							sx={{fontSize: { xs: '15px', md: '20px' }}}
 							className={styles.titlecomic}
 						>
 							{props.title}
@@ -45,7 +53,7 @@ export default function Comic(props) {
 						</Typography>
 						<Typography
 							variant="body2"
-							sx={{ mt: 1, color: '#3f3f3f' }}
+							sx={ ReadmeStyle }
 							className={styles.readme}
 						>
 							Click Para Ver Mais

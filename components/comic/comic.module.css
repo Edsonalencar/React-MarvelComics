@@ -11,17 +11,19 @@
 }
 
 .CardComic:hover .midia {
-  height: 70%;
+  height: 65%;
   -webkit-transition: .5s;
   transition: .5s;
 }
 
 .CardComic:hover .readme {
   display: block;
+  -webkit-transition: 1s;
+  transition: 1s;
 }
 
 .midia {
-  height: 80%;
+  height: 75%;
   -webkit-box-shadow: 0 0 1em #202020;
           box-shadow: 0 0 1em #202020;
   background: transparent;
@@ -31,5 +33,7 @@
 
 .readme {
   display: none;
+  -webkit-transition: .5s;
+  transition: .5s;
 }
 /*# sourceMappingURL=comic.module.css.map */

@@ -12,18 +12,19 @@
 		}
 
 		.midia {
-			height: 70%;
+			height: 65%;
 			transition: .5s;
 		}
 
 		.readme {
 			display: block;
+			transition: 1s;
 		}
 	}
 }
 
 .midia {
-	height: 80%;
+	height: 75%;
 	box-shadow: 0 0 1em #202020;
 	background: transparent;
 	transition: .2s;
@@ -31,4 +32,5 @@
 
 .readme {
 	display: none;
+	transition: .5s;
 }
