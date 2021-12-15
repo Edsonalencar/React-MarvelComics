@@ -55,7 +55,7 @@ export default function Home(props) {
 						noWrap
 						align='center'
 						component="div"
-						sx={{mb: 2, fontSize: '2rem'}}
+						sx={{mb: 2, fontSize: { xs: '1.7rem', md: '2rem' }}}
 					>
 						Comics em Destaques
 					</Typography>

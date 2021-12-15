@@ -54,4 +54,10 @@
           flex-grow: 1;
   color: #fff;
 }
+
+@media screen and (max-width: 1024px) {
+  .footer a {
+    font-size: 14px;
+  }
+}
 /*# sourceMappingURL=Home.module.css.map */

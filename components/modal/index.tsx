@@ -2,9 +2,7 @@ import { useState, useEffect, Fragment } from 'react';
 import { GoogleMap, useJsApiLoader, Marker } from '@react-google-maps/api';
 
 import { Modal, Typography, Button, Box } from '@mui/material';
-import { Card, Grid, CardMedia } from '@mui/material';
-import {DialogActions, DialogContent, DialogContentText, DialogTitle } from '@mui/material';
-import Dialog, { DialogProps } from '@mui/material/Dialog';
+import { Grid, CardMedia, Dialog, DialogActions } from '@mui/material';
 import CancelIcon from '@mui/icons-material/Cancel';
 import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
 
@@ -21,8 +19,8 @@ const style = {
 	px: 2,
 };
 
-
 function ChildModal(props) {
+
 	const [open, setOpen] = useState(false);
 	const handleOpen = () => {
 		setOpen(true);

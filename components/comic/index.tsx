@@ -1,7 +1,5 @@
 import { useState } from 'react';
 import { Card, CardMedia, CardContent, Typography  } from '@mui/material';
-import useMediaQuery from '@mui/material/useMediaQuery';
-
 import styles from './comic.module.css';
 import Modal from '../modal';
 
